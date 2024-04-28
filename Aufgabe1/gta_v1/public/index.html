@@ -27,22 +27,26 @@
 
             <fieldset>
                 <legend>Add a new GeoTag</legend>
+                <div class="row">
+                    <div class="col-6">
                 <!-- ############### VS1Lab 1a Form 1 Start -->
-                <form id="tag-form" action="/tagging" method="post">
-                    <label for="latitude">Latitude:</label>
-                    <input type="text" name="latitude" id="latitude" placeholder="e.g. 52.5200" value="49.01379" readonly required>
+                    <form id="tag-form" action="/tagging" method="post">
+                        <label for="latitude">Latitude:</label>
+                        <input type="text" name="latitude" id="latitude" placeholder="e.g. 52.5200" value="49.01379" readonly required>
 
-                    <label for="longitude">Longitude:</label>
-                    <input type="text" name="longitude" id="longitude" placeholder="e.g. 13.4050" value="8.390071" readonly required>
+                        <label for="longitude">Longitude:</label>
+                        <input type="text" name="longitude" id="longitude" placeholder="e.g. 13.4050" value="8.390071" readonly required>
 
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" id="name" pattern="#?[A-Za-z]{1,10}" placeholder="e.g. Central Berlin" required>
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" pattern="#?[A-Za-z]{1,10}" placeholder="e.g. Central Berlin" required>
 
-                    <label for="hashtag">Hashtag:</label>
-                    <input type="text" name="hashtag" id="hashtag" pattern="#[A-Za-z]{1,10}" placeholder="e.g. #ber">
+                        <label for="hashtag">Hashtag:</label>
+                        <input type="text" name="hashtag" id="hashtag" pattern="#[A-Za-z]{1,10}" placeholder="e.g. #ber">
 
-                    <input type="submit" value="Add Tag">
-                </form>
+                        <input type="submit" value="Add Tag">
+                    </form>
+                    </div>
+                </div>
                 <!-- ############### VS1Lab 1a Form 1 End -->
             </fieldset>
 
@@ -53,17 +57,21 @@
 
             <fieldset>
                 <legend>Search</legend>
+                    <div class="row">
+                        <div class="col-6">
                 <!-- ############### VS1Lab 1a Form 2 Start -->
-                <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
-                    <label for="searchterm">Search term or keywords:</label>
-                    <input type="text" name="searchterm" id="searchterm" placeholder="e.g. Berlin" required>
+                    <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
+                        <label for="searchterm">Search term or keywords:</label>
+                        <input type="text" name="searchterm" id="searchterm" placeholder="e.g. Berlin" required>
 
-                    <input type="hidden" name="latitude" id="search_latitude">
+                        <input type="hidden" name="latitude" id="search_latitude">
 
-                    <input type="hidden" name="longitude" id="search_longitude">
+                        <input type="hidden" name="longitude" id="search_longitude">
 
-                    <input type="submit" value="Search">
-                </form>
+                        <input type="submit" value="Search">
+                    </form>
+                        </div>
+                    </div>
                 <!-- ############### VS1Lab 1a Form 2 End -->
             </fieldset>
 
