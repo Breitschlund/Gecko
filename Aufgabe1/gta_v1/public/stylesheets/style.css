@@ -76,8 +76,6 @@ a {
 .tagging button {
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  display: inline-block;
   padding: 0.5rem;
 }
 /* Tagging Formular */
@@ -143,6 +141,7 @@ a {
   display: inline-block;
   flex: 1 1 calc(50% - 0.5rem);
   margin-right: 0.5rem; 
+  margin-top: 0.5rem;
 }
 
 .discovery__results li {
@@ -152,6 +151,7 @@ a {
 }
 
 .discovery__map {
+  margin-top: 0.5rem;
   display: grid;
   flex: 1 1 calc(50% - 0.5rem); 
 }
