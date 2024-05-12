@@ -217,7 +217,6 @@ fieldset legend {
   margin-top: 1rem;
   display: grid;
   flex: 1 1 calc(10%);
-  min-height: 381px;
 }
 
 
@@ -252,6 +251,10 @@ fieldset legend {
   .discovery__map,
   .discovery__search input {
     width: 100%;
+  }
+
+  .discovery__map {
+    min-height: 80vw;
   }
 }
 
