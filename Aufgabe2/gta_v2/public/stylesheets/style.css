@@ -131,6 +131,7 @@ input[type='submit'] {
 	background: var(--background-color);
   border: 1px solid var(--border-color);
   margin-top: 0.5rem;
+  cursor: pointer;
 }
 
 fieldset {
@@ -166,6 +167,12 @@ fieldset legend {
   display: grid;
 }
 
+#tag-form input[readonly] {
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  cursor: not-allowed;
+}
+
 /* Discovery Component */
 .discovery {
   flex: 1 1 calc(100% - 300px);
@@ -195,14 +202,14 @@ fieldset legend {
 .discovery__wrapper {
   display: flex;
   justify-content: space-between;
+  margin-top: 1.5rem;
 }
 
 .discovery__results {
   list-style-type: none;
   display: inline-block;
   flex: 1 1 calc(50% - 0.5rem);
-  margin-right: 0.5rem; 
-  margin-top: 1rem;
+  margin-right: 0.5rem;
 }
 
 .discovery__results li {
@@ -214,10 +221,16 @@ fieldset legend {
 }
 
 .discovery__map {
-  margin-top: 1rem;
-  display: grid;
+  display: flex;
   flex: 1 1 calc(10%);
-  min-height: 381px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.discovery__map img {
+  width: 100%;
+  height: auto;
+  max-width: 60vh;
 }
 
 
@@ -230,7 +243,7 @@ fieldset legend {
   border: 1px solid var(--border-color);
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 750px) {
   .row {
     flex-direction: column;
   }
@@ -250,11 +263,13 @@ fieldset legend {
   .col-12,
   .discovery__results,
   .discovery__map,
-  .discovery__search input {
+  .discovery__search input,
+  .discovery__map img {
     width: 100%;
+    max-width: 100%;
   }
 }
 
 #map { 
-  height: 500px;
+  min-height: 500px;
 }
