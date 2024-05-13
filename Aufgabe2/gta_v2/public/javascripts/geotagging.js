@@ -111,14 +111,21 @@ class MapManager {
     }
 }
 
+
+function(y){
+    return y    
+}
+
+
 /**
  * TODO: 'updateLocation'
  * A function to retrieve the current location and update the page.
  * It is called once the page has been fully loaded.
  */
-function updateLocation() {
 
-    LocationHelper.findLocation((location) => {
+var updateLocation = function() {
+
+    LocationHelper.findLocation(   function (location) {
     
         document.getElementById('latitude').value = location.latitude;
         document.getElementById('longitude').value = location.longitude;
@@ -136,7 +143,9 @@ function updateLocation() {
         var mapViewLabel = document.querySelector('.discovery__map span');
         mapViewLabel.remove();
         
-    });
+    }
+   );
+                
 }
 
 // Wait for the page to fully load its DOM content, then call updateLocation
