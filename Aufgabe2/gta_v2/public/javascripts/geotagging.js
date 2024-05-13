@@ -134,7 +134,7 @@ function updateLocation() {
         var mapViewImage = document.getElementById('mapView');
         mapViewImage.remove();
 
-        mapViewLabel = document.querySelector('.discovery__map span');
+        var mapViewLabel = document.querySelector('.discovery__map span');
         mapViewLabel.remove();
         
     });
