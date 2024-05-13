@@ -126,7 +126,6 @@ function updateLocation() {
         document.getElementById('search_latitude').value = location.latitude;
         document.getElementById('search_longitude').value = location.longitude;
         
-        // Ab hier unsicher bitte nochmal nachschauen
         var map = new MapManager();
         map.initMap(location.latitude, location.longitude);
         map.updateMarkers(location.latitude, location.longitude);
