@@ -26,6 +26,34 @@
 class InMemoryGeoTagStore{
 
     // TODO: ... your code here ...
+    constructor(){
+        this.geoTags = [];
+    }
+
+    addGeoTag(geoTag){
+        this.geoTags.push(geoTag);
+    }
+
+    removeGeoTag(name){
+        this.geoTags = this.geoTags.filter(geoTag => geoTag.name !== name);
+
+    }
+
+    getNearbyGeoTags(radius, location){
+        return this.geoTags.filter(geoTag => {
+            const distance = Math.sqrt(Math.pow(geoTag.latitude - location.latitude, 2) + Math.pow(geoTag.longitude - location.longitude, 2));
+            return distance <= radius;
+        });
+    }
+
+    searchNearbyGeoTags(location, radius, keyword){
+        return this.geoTags.filter(geoTag => {
+            const distance = Math.sqrt(Math.pow(geoTag.latitude - location.latitude, 2) + Math.pow(geoTag.longitude - location.longitude, 2));
+            return distance <= radius && (geoTag.name.includes(keyword) || geoTag.hashtag.includes(keyword));
+        });
+    }
+
+
 
 }
 

@@ -43,6 +43,7 @@ app.use(express.urlencoded({ extended: false }));
  */
 
 // TODO: ... your code here ...
+app.use(express.static(path.join(__dirname, 'public'))); //Fuert Content aus "Public" Ordner aus
 
 // Set dedicated script for routing
 app.use('/', indexRouter);
