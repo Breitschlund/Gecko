@@ -29,7 +29,7 @@ const GeoTag = require('../models/geotag');
  * TODO: implement the module in the file "../models/geotag-store.js"
  */
 // eslint-disable-next-line no-unused-vars
-const GeoTagStore = require('../models/geotag-store');
+const GeoTagStore = require('../models/geotag-store'); 
 
 /**
  * Route '/' for HTTP 'GET' requests.
@@ -62,7 +62,26 @@ router.get('/', (req, res) => {
 
 // TODO: ... your code here ...
 
-//Test 
+//KA ob des das ist was wir machen sollen
+// Chat GPTs Lösung ist 0 brauchbar und 0 mit prof seinen Code compatibel
+//Meine Lösung:
+
+const geoTagStore = new GeoTagStore(); // GeoTagStore Objekt erstellen
+
+router.post('/tagging', (req, res) =>{
+
+  const {latitude, longitude, name, hashtag} = req.body; //Input aus Eingabe entnehmen 
+
+  const newGeoTag = new GeoTag(latitude, longitude, name, hashtag); // Neues GeoTag erstellen
+  
+
+  geoTagStore.addGeoTag(newGeoTag); // HInzufügen zu GeoTagStore
+
+  res.render('index', {taglist: []}); //Da muss glaub was rein statt [], Webseite Actualisieren
+
+})
+
+
 
 /**
  * Route '/discovery' for HTTP 'POST' requests.
@@ -81,5 +100,18 @@ router.get('/', (req, res) => {
  */
 
 // TODO: ... your code here ...
+router.post('/discovery', (req, res) => {
+  const {latitude, longitude, name} = req.body; // Such eingabe entnehmen
+
+  let result = geoTagStore. getNearbyGeoTags( latitude, longitude, 100);  // GeoTags in nähe suchen
+
+ if(name != null){                    //Wenn Name eingegeben, nach namen suchen
+   result = geoTagStore. searchNearbyGeoTags( latitude, longitude, 100, name);
+ }
+
+
+  res.render('index',{taglist: result}); // Des könnte au Falsch sein, Webseite Actualisieren
+});
+
 
 module.exports = router;
