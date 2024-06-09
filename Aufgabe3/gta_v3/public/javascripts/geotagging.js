@@ -19,6 +19,9 @@ console.log("The geoTagging script is going to start...");
 
 var updateLocation = function() {
 
+    var mapElement = document.getElementById('map');
+    var geoTags = JSON.parse(mapElement.getAttribute('data-tags') || '[]');
+
     if (!document.getElementById('latitude') || document.getElementById('longitude')) {
 
         LocationHelper.findLocation(   function (location) {
@@ -52,7 +55,7 @@ var updateLocation = function() {
 
         var map = new MapManager();
         map.initMap(latitude, longitude);
-        map.updateMarkers(latitude, longitude);
+        map.updateMarkers(latitude, longitude, geoTags);
     }
 }
 
