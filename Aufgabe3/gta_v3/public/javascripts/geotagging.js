@@ -19,8 +19,9 @@ console.log("The geoTagging script is going to start...");
 
 var updateLocation = function() {
 
-    var mapElement = document.getElementById('map');
-    var geoTags = JSON.parse(mapElement.getAttribute('data-tags') || '[]');
+    const mapElement = document.getElementById("map");
+    const taglistJson = mapElement.getAttribute("data-tags");
+    const taglist = JSON.parse(taglistJson);
 
     if (!document.getElementById('latitude') || document.getElementById('longitude')) {
 
@@ -31,10 +32,10 @@ var updateLocation = function() {
 
             document.getElementById('search_latitude').value = location.latitude;
             document.getElementById('search_longitude').value = location.longitude;
-        
+
             var map = new MapManager();
             map.initMap(location.latitude, location.longitude);
-            map.updateMarkers(location.latitude, location.longitude);
+            map.updateMarkers(location.latitude, location.longitude, taglist);
 
             var mapViewImage = document.getElementById('mapView');
             if (mapViewImage) {
@@ -55,7 +56,7 @@ var updateLocation = function() {
 
         var map = new MapManager();
         map.initMap(latitude, longitude);
-        map.updateMarkers(latitude, longitude, geoTags);
+        map.updateMarkers(latitude, longitude, taglist);
     }
 }
 
