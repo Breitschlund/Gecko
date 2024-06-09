@@ -1,6 +1,7 @@
 // File origin: VS1LAB A3
 
 const GeoTagExamples = require("./geotag-examples");
+const GeoTag = require("./geotag");
 
 /**
  * This script is a template for exercise VS1lab/Aufgabe3
@@ -28,10 +29,9 @@ const GeoTagExamples = require("./geotag-examples");
 class InMemoryGeoTagStore{
 
     // TODO: ... your code here ...
-    constructor(){
+    constructor() {
         this.geoTags = [];
-
-        GeoTagExamples.tagList.forEach(tag => this.addGeoTag(tag))  //Hinzufügen von Profs Bps tags in Array
+        GeoTagExamples.tagList.forEach(tag => this.addGeoTag(new GeoTag(tag[0], tag[1], tag[2], tag[3])));
     }
 
     addGeoTag(geoTag){
@@ -43,7 +43,7 @@ class InMemoryGeoTagStore{
 
     }
 
-    getNearbyGeoTags( latitude, longitude, radius){
+    getNearbyGeoTags(latitude, longitude, radius){
         return this.geoTags.filter(geoTag => {
             const distance = Math.sqrt(Math.pow(geoTag.latitude - latitude, 2) + Math.pow(geoTag.longitude - longitude, 2));
             return distance <= radius;
@@ -51,9 +51,8 @@ class InMemoryGeoTagStore{
     }
 
     searchNearbyGeoTags(latitude, longitude, radius, keyword){
-        return this.geoTags.filter(geoTag => {
-            const distance = Math.sqrt(Math.pow(geoTag.latitude - location.latitude, 2) + Math.pow(geoTag.longitude - location.longitude, 2));
-            return distance <= radius && (geoTag.name.includes(keyword) || geoTag.hashtag.includes(keyword));
+        return this.getNearbyGeoTags(latitude, longitude, radius).filter(tag => {
+            return tag.name.toLowerCase().includes(keyword.toLowerCase()) || tag.hashtag.toLowerCase().includes(keyword.toLowerCase());
         });
     }
 
