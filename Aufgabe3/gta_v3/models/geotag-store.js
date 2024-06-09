@@ -29,22 +29,24 @@ const GeoTag = require("./geotag");
 class InMemoryGeoTagStore{
 
     // TODO: ... your code here ...
+    #geoTags
+
     constructor() {
-        this.geoTags = [];
+        this.#geoTags = [];
         GeoTagExamples.tagList.forEach(tag => this.addGeoTag(new GeoTag(tag[0], tag[1], tag[2], tag[3])));
     }
 
     addGeoTag(geoTag){
-        this.geoTags.push(geoTag);
+        this.#geoTags.push(geoTag);
     }
 
     removeGeoTag(name){
-        this.geoTags = this.geoTags.filter(geoTag => geoTag.name !== name);
+        this.#geoTags = this.#geoTags.filter(geoTag => geoTag.name !== name);
 
     }
 
     getNearbyGeoTags(latitude, longitude, radius){
-        return this.geoTags.filter(geoTag => {
+        return this.#geoTags.filter(geoTag => {
             const distance = Math.sqrt(Math.pow(geoTag.latitude - latitude, 2) + Math.pow(geoTag.longitude - longitude, 2));
             return distance <= radius;
         });
