@@ -22,12 +22,15 @@ var updateLocation = function() {
     var mapElement = document.getElementById('map');
     var geoTags = JSON.parse(mapElement.getAttribute('data-tags') || '[]');
 
+    var latitudeAlex = document.getElementById('latitude');
+    var longitudeAlex = document.getElementById('longitude');
+
     if (!document.getElementById('latitude') || document.getElementById('longitude')) {
 
         LocationHelper.findLocation(   function (location) {
     
-            document.getElementById('latitude').value = location.latitude;
-            document.getElementById('longitude').value = location.longitude;
+            document.longitudeAlex.value = location.latitude;
+            document.longitudeAlex.value = location.longitude;
 
             document.getElementById('search_latitude').value = location.latitude;
             document.getElementById('search_longitude').value = location.longitude;
@@ -50,8 +53,8 @@ var updateLocation = function() {
    );
                 
     } else {
-        var latitude = parseFloat(document.getElementById('latitude').value)
-        var longitude = parseFloat(document.getElementById('longitude').value)
+        var latitude = parseFloat(latitudeAlex.value)
+        var longitude = parseFloat(longitudeAlex.value)
 
         var map = new MapManager();
         map.initMap(latitude, longitude);
