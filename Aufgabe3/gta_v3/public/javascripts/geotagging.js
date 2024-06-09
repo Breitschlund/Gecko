@@ -19,27 +19,41 @@ console.log("The geoTagging script is going to start...");
 
 var updateLocation = function() {
 
-    LocationHelper.findLocation(   function (location) {
+    if (!document.getElementById('latitude') || document.getElementById('longitude')) {
+
+        LocationHelper.findLocation(   function (location) {
     
-        document.getElementById('latitude').value = location.latitude;
-        document.getElementById('longitude').value = location.longitude;
+            document.getElementById('latitude').value = location.latitude;
+            document.getElementById('longitude').value = location.longitude;
 
-        document.getElementById('search_latitude').value = location.latitude;
-        document.getElementById('search_longitude').value = location.longitude;
+            document.getElementById('search_latitude').value = location.latitude;
+            document.getElementById('search_longitude').value = location.longitude;
         
-        var map = new MapManager();
-        map.initMap(location.latitude, location.longitude);
-        map.updateMarkers(location.latitude, location.longitude);
+            var map = new MapManager();
+            map.initMap(location.latitude, location.longitude);
+            map.updateMarkers(location.latitude, location.longitude);
 
-        var mapViewImage = document.getElementById('mapView');
-        mapViewImage.remove();
+            var mapViewImage = document.getElementById('mapView');
+            if (mapViewImage) {
+                mapViewImage.remove();
+            }
 
-        var mapViewLabel = document.querySelector('.discovery__map span');
-        mapViewLabel.remove();
-        
-    }
+
+            var mapViewLabel = document.querySelector('.discovery__map span');
+            if (mapViewLabel) {
+            mapViewLabel.remove();
+            }
+        }
    );
                 
+    } else {
+        var latitude = parseFloat(document.getElementById('latitude').value)
+        var longitude = parseFloat(document.getElementById('longitude').value)
+
+        var map = new MapManager();
+        map.initMap(latitude, longitude);
+        map.updateMarkers(latitude, longitude);
+    }
 }
 
 // Wait for the page to fully load its DOM content, then call updateLocation
