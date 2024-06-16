@@ -61,11 +61,6 @@ router.get('/', (req, res) => {
  */
 
 // TODO: ... your code here ...
-
-//KA ob des das ist was wir machen sollen
-// Chat GPTs Lösung ist 0 brauchbar und 0 mit prof seinen Code compatibel
-//Meine Lösung:
-
 const geoTagStore = new GeoTagStore(); // GeoTagStore Objekt erstellen
 
 router.post('/tagging', (req, res) =>{
