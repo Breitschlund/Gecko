@@ -23,10 +23,9 @@ var updateLocation = function() {
     const taglistJson = mapElement.getAttribute("data-tags");
     const taglist = JSON.parse(taglistJson);
 
-    if (!document.getElementById('latitude') || document.getElementById('longitude')) {
+    if (document.getElementById('latitude').value == "" || document.getElementById('longitude').value == "") {
 
         LocationHelper.findLocation(   function (location) {
-    
             document.getElementById('latitude').value = location.latitude;
             document.getElementById('longitude').value = location.longitude;
 
@@ -57,6 +56,17 @@ var updateLocation = function() {
         var map = new MapManager();
         map.initMap(latitude, longitude);
         map.updateMarkers(latitude, longitude, taglist);
+
+        var mapViewImage = document.getElementById('mapView');
+            if (mapViewImage) {
+                mapViewImage.remove();
+            }
+
+
+            var mapViewLabel = document.querySelector('.discovery__map span');
+            if (mapViewLabel) {
+            mapViewLabel.remove();
+            }
     }
 }
 
