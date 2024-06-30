@@ -1,0 +1,10 @@
+PUT http://localhost:3000/api/geotags/1 HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+
+{
+    "name": "Updated Castle",
+    "latitude": 49.013790,
+    "longitude": 8.404435,
+    "hashtag": "#historical"
+}
