@@ -30,19 +30,36 @@ class InMemoryGeoTagStore{
 
     // TODO: ... your code here ...
     #geoTags
+    #nextId
 
     constructor() {
         this.#geoTags = [];
+        this.#nextId = 1;
         GeoTagExamples.tagList.forEach(tag => this.addGeoTag(new GeoTag(tag[0], tag[1], tag[2], tag[3])));
     }
 
     addGeoTag(geoTag){
+        geoTag.id = this.nextId++;
         this.#geoTags.push(geoTag);
     }
 
-    removeGeoTag(name){
+    /*removeGeoTag(name){
         this.#geoTags = this.#geoTags.filter(geoTag => geoTag.name !== name);
 
+    }*/
+
+    removeGeoTag(id) {
+        this.#geoTags = this.#geoTags.filter(geoTag => geoTag.id !== id);
+    }
+
+    getGeoTagById(id) {
+        return this.#geoTags.find(geoTag => geoTag.id === id);
+    }
+
+    updateGeoTag(id, updatedGeoTag) {
+        tag = this.getGeoTagById(id);
+        updatedGeoTag.id = id;
+        tag = updatedGeoTag;
     }
 
     getNearbyGeoTags(latitude, longitude, radius){
