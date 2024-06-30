@@ -42,7 +42,8 @@ const GeoTagStore = require('../models/geotag-store');
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  res.render('index', { taglist: geoTagStore.getNearbyGeoTags( 0, 0, 25000) })
+  const {latitude, longitude, name, hashtag} = req.body;
+  res.render('index', { taglist: geoTagStore.getNearbyGeoTags( latitude, longitude, 100) })
 });
 
 /**
@@ -66,12 +67,14 @@ const geoTagStore = new GeoTagStore(); // GeoTagStore Objekt erstellen
 router.post('/tagging', (req, res) =>{
 
   const {latitude, longitude, name, hashtag} = req.body; //Input aus Eingabe entnehmen 
+  let result = geoTagStore.getNearbyGeoTags( latitude, longitude, 100);
 
   const newGeoTag = new GeoTag(latitude, longitude, name, hashtag); // Neues GeoTag erstellen
+  
 
   geoTagStore.addGeoTag(newGeoTag); // HInzufügen zu GeoTagStore
 
-  res.render('index', {taglist: geoTagStore.getNearbyGeoTags( latitude, longitude, 100)}); //Da muss glaub was rein statt [], Webseite Actualisieren
+  res.render('index', {taglist: result}); //Da muss glaub was rein statt [], Webseite Actualisieren
 
 })
 
