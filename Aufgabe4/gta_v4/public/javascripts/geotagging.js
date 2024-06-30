@@ -67,7 +67,7 @@ function removeMapViewElements() {
 document.addEventListener("DOMContentLoaded", () => {
     updateLocation();
 
-    document.getElementById('tag-form').addEventListener('submit', function(event) {
+    document.getElementById('tag-form').addEventListener('submit', async function(event) {
         event.preventDefault();
         const formData = new FormData(this);
         const data = {
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    document.getElementById('discoveryFilterForm').addEventListener('submit', function(event) {
+    document.getElementById('discoveryFilterForm').addEventListener('submit', async function(event) {
         event.preventDefault();
         const formData = new FormData(this);
 
