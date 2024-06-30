@@ -147,7 +147,7 @@ Zur Übersicht folgen noch mal alle Anforderungen in kompakter Form als Checklis
 
 ### 3. Teilaufgabe: Karten-Erweiterung
 
-- [ ] EJS-Template mit `data-*`-Attribut erweitern
-  - [ ] Im `#map`-Element ein `data-tags`-Attribut erstellen und **Array mit GeoTag Objekten als JSON-String** einfügen
-- [ ] Aufruf von `updateMarkers` aus `updateLocation` erweitern
-  - [ ] Array mit GeoTag Objekten übergeben und **Map Marker anzeigen**
+- [X] EJS-Template mit `data-*`-Attribut erweitern
+  - [X] Im `#map`-Element ein `data-tags`-Attribut erstellen und **Array mit GeoTag Objekten als JSON-String** einfügen
+- [X] Aufruf von `updateMarkers` aus `updateLocation` erweitern
+  - [X] Array mit GeoTag Objekten übergeben und **Map Marker anzeigen**

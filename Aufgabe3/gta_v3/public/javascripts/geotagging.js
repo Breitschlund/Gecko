@@ -26,6 +26,8 @@ var updateLocation = function() {
     if (!document.getElementById('latitude') || document.getElementById('longitude')) {
 
         LocationHelper.findLocation(   function (location) {
+
+            console.log("findLocation");
     
             document.getElementById('latitude').value = location.latitude;
             document.getElementById('longitude').value = location.longitude;
