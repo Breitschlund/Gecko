@@ -58,7 +58,7 @@ router.get('/', (req, res) => {
 
 const store = new GeoTagStore();
 
-router.get('/api/geotags/search', function(req, res) {  // sollte ohne search sein Fehler?
+router.get('/api/geotags/', function(req, res) {
   const {searchterm, latitude, longitude} = req.query;
 
   if (latitude && longitude) {
