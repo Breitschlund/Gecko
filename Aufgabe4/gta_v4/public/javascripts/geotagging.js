@@ -36,16 +36,7 @@ var updateLocation = function() {
             map.initMap(location.latitude, location.longitude);
             map.updateMarkers(location.latitude, location.longitude, taglist);
 
-            var mapViewImage = document.getElementById('mapView');
-            if (mapViewImage) {
-                mapViewImage.remove();
-            }
-
-
-            var mapViewLabel = document.querySelector('.discovery__map span');
-            if (mapViewLabel) {
-            mapViewLabel.remove();
-            }
+        removeMap();
         }
    );
                 
@@ -57,18 +48,22 @@ var updateLocation = function() {
         map.initMap(latitude, longitude);
         map.updateMarkers(latitude, longitude, taglist);
 
-        var mapViewImage = document.getElementById('mapView');
-            if (mapViewImage) {
-                mapViewImage.remove();
-            }
-
-
-            var mapViewLabel = document.querySelector('.discovery__map span');
-            if (mapViewLabel) {
-            mapViewLabel.remove();
-            }
+        removeMap();
     }
 }
+
+function removeMap() {
+    var mapImage = document.getElementById('mapView');
+    if(mapImage) {
+        mapImage.remove();
+    }
+    var mapLabel = document.querySelector('.discovery__map span')
+    if(mapLabel) {
+        mapLabel.remove();
+    }
+}
+
+
 
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
