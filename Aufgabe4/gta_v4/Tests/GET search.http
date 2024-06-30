@@ -1,0 +1,2 @@
+GET http://localhost:3000/api/geotags/search?searchterm=camp&latitude=49.013790&longitude=8.404435 HTTP/1.1
+Host: localhost:3000

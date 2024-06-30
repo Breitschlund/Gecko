@@ -39,7 +39,7 @@ class InMemoryGeoTagStore{
     }
 
     addGeoTag(geoTag){
-        geoTag.id = this.nextId++;
+        geoTag.id = this.#nextId++;
         this.#geoTags.push(geoTag);
     }
 
@@ -57,9 +57,10 @@ class InMemoryGeoTagStore{
     }
 
     updateGeoTag(id, updatedGeoTag) {
-        tag = this.getGeoTagById(id);
+        this.removeGeoTag(id);
         updatedGeoTag.id = id;
-        tag = updatedGeoTag;
+        this.#geoTags.push(updatedGeoTag);
+        return updatedGeoTag;
     }
 
     getNearbyGeoTags(latitude, longitude, radius){

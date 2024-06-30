@@ -56,24 +56,24 @@ router.get('/', (req, res) => {
  * If 'latitude' and 'longitude' are available, it will be further filtered based on radius.
  */
 
-const geoTagStore = new GeoTagStore();
+const store = new GeoTagStore();
 
-router.get('/api/geotags', function(req, res) {
-  const {searchterm, latitude, longitude, radius} = req.query;
+router.get('/api/geotags/search', function(req, res) {  // sollte ohne search sein Fehler?
+  const {searchterm, latitude, longitude} = req.query;
 
-  if (latitude && longitude && radius) {
+  if (latitude && longitude) {
 
       if (searchterm) {
-        result = store.searchNearbyGeoTags(latitude, longitude, radius, searchterm);  // Normale Suche
+        result = store.searchNearbyGeoTags(latitude, longitude, 100, searchterm);  // Normale Suche
       } else {
-        result = store.getNearbyGeoTags(latitude, longitude, radius); // Leere Suche
+        result = store.getNearbyGeoTags(latitude, longitude, 100); // Leere Suche
       }
 
   } else {
       result = store.getNearbyGeoTags(0, 0, Infinity);  // Wenn etwas fehlt alles zurückgeben
   }
 
-  res.json(tags); // Status Code?
+  res.json(result); // Status Code?
 });
 
 
@@ -107,12 +107,12 @@ router.post('/api/geotags', function(req, res) {
  */
 
 router.get('/api/geotags/:id', function(req, res) {
-  const id = req.params.id;
+  const id = parseInt(req.params.id);
   const tag = store.getGeoTagById(id);
   if (tag) {
       res.json(tag); // Status Code?
   } else {
-      res.status(404).json({ message: 'GeoTag not found' });
+      res.status(404).json({ message: "GeoTag not found" });
   }
 });
 
@@ -132,13 +132,13 @@ router.get('/api/geotags/:id', function(req, res) {
  */
 
 router.put('/api/geotags/:id', function(req, res) {
-  const id = req.params.id;
+  const id = parseInt(req.params.id);
   const newTag = req.body;
   const tag = store.updateGeoTag(id, newTag);
   if (tag) {
       res.json(tag); // Status Code?
   } else {
-      res.status(404).json({ message: 'GeoTag not found' });
+      res.status(404).json({ message: "GeoTag not found" });
   }
 });
 
@@ -155,13 +155,13 @@ router.put('/api/geotags/:id', function(req, res) {
  */
 
 router.delete('/api/geotags/:id', function(req, res) {
-  const id = req.params.id;
+  const id = parseInt(req.params.id);
   const tag = store.getGeoTagById(id);
   if (tag) {
       store.removeGeoTag(id);
       res.json(tag); // Status Code?
   } else {
-      res.status(404).json({ message: 'GeoTag not found' });
+      res.status(404).json({ message: "GeoTag not found" });
   }
 });
 
