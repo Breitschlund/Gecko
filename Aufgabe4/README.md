@@ -133,11 +133,11 @@ Zur Übersicht folgen noch mal alle Anforderungen in kompakter Form als Checklis
   - [ ] **Event-Listener** für beide Formulare registrieren
   - [ ] **Absenden** der Formulare verhindern
   - [ ] **Formular-Validierung** bleibt erhalten
-- [ ] **AJAX-Aufrufe** per **Fetch API** hinzufügen
-  - [ ] Aufruf im **Tagging Formular** *asynchron*
-    - [ ] *HTTP POST* mit Body in *JSON Format*
-  - [ ] Aufruf im **Discovery Formular** *asynchron*
-    - [ ] *HTTP GET* mit *Query Parametern* 
+- [X] **AJAX-Aufrufe** per **Fetch API** hinzufügen
+  - [X] Aufruf im **Tagging Formular** *asynchron*
+    - [X] *HTTP POST* mit Body in *JSON Format*
+  - [X] Aufruf im **Discovery Formular** *asynchron*
+    - [X] *HTTP GET* mit *Query Parametern* 
 - [ ] **Anzeigeaktualisierung** realisieren
   - [ ] **Ergebnisliste** aktualisieren
   - [ ] **Karte** aktualisieren

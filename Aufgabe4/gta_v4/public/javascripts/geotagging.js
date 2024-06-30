@@ -69,3 +69,42 @@ function removeMap() {
 document.addEventListener("DOMContentLoaded", () => {
     updateLocation();
 });
+
+async function handleTaggingFormular(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const name = form.querySelector("#tagging-name").value;
+    const latitude = form.querySelector("#tagging-latitude").value;
+    const longitude = form.querySelector("#tagging-longitude").value;
+    const hashtag = form.querySelector("#tagging-hashtag").value;
+
+    const data = { name: name, hashtag: hashtag, latitude: parseFloat(latitude), longitude: parseFloat(longitude) };
+
+        const response = await fetch("http://localhost:3000/", { //herausfinden!!!!!!!!! ALEX DEIN JOB PLS
+            method: "POST",
+            header: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(data)
+        }
+
+        )
+        .then(response => response.json())
+        .then(data => console.log('Erfolg:', data))
+        .catch(error => console.error('Fehler:', error));
+}
+
+async function handleDiscoveryFormular(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const searchQuery = form.querySelector("#discovery-search").value;
+
+    const request = await fetch("http://localhost:3000/api/geotag-store?search={searchQuery}", { //herausfinden!!!!!!!!! ALEX DEIN JOB PLS
+        method: "GET"
+    }) 
+    .then(response => response.json())
+    .then(data => console.log('Erfolg:', data))
+    .catch(error => console.error('Fehler:', error));
+}
