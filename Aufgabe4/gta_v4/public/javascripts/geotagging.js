@@ -86,8 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(response => response.json())
         .then(newTag => {
-            console.log('Success:', newTag);
             taglist.push(newTag);
+            updateTagList(taglist);
+            console.log('Success:', newTag);
             map.updateMarkers(parseFloat(newTag.latitude), parseFloat(newTag.longitude), taglist);
         })
         .catch((error) => {
